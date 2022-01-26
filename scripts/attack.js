@@ -14,6 +14,8 @@ const contractAddr = "0xb2bd05B8f73A48560A75427153E12de1377967dA";
 const wallet = new ethers.Wallet(process.env.DEV_WALLET_PRIVATE_KEY, provider);
 let contract = new ethers.Contract(contractAddr, abiCode.abi, wallet);
 
+const msg = 'final result: ';
+
 
 
 (async () => {
@@ -23,6 +25,6 @@ let contract = new ethers.Contract(contractAddr, abiCode.abi, wallet);
   console.log('balance: ', ethers.utils.formatEther(balance));
   const blockHash = await contract.functions.getBlockhash();
   const tx = await blockHash.wait();
-  console.log('final result: ', tx);
+  console.log(msg, tx);
 })();
 
